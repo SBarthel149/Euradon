@@ -266,3 +266,86 @@ img[src*="brambach-wettinquelle"] { object-position: 50% 70%; }
   .pin { width: 18px; height: 18px; margin: -9px 0 0 -9px; border-width: 2px; }
   .pin.multi { width: 24px; height: 24px; margin: -12px 0 0 -12px; }
 }
+
+/* ===== Mega-Menü ===== */
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
+.nav-top { font: inherit; font-family: var(--display); font-size: .9375rem; font-weight: 500; color: var(--ink); background: transparent; border: 0; cursor: pointer; padding: 9px 12px; border-radius: var(--radius); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; position: relative; }
+.nav-top .chev { width: 12px; height: 12px; transition: transform .2s ease; }
+.nav-top[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.nav-top::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 3px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.nav-top:hover::after, .nav-top[aria-expanded="true"]::after, .nav-top.is-current::after, .nav-top[aria-current="page"]::after { transform: scaleX(1); }
+.nav-top:hover { color: var(--petrol); }
+.nav a.nav-top:hover, .nav a.nav-top[aria-current="page"] { background: transparent; }
+
+.mega { position: absolute; left: 0; right: 0; top: 100%; background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); box-shadow: 0 24px 40px -28px rgba(16, 46, 44, .45); opacity: 0; transform: translateY(-8px); transition: opacity .18s ease, transform .18s ease; }
+.mega.is-open { opacity: 1; transform: none; }
+.mega-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 40px; padding-block: 28px 32px; align-items: start; }
+.mega-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; }
+.mega-links a { display: grid; gap: 2px; padding: 12px 14px; border-radius: 8px; text-decoration: none; color: var(--ink); transition: background .2s ease; }
+.mega-links a:hover, .mega-links a:focus-visible { background: var(--mineral); }
+.mega-links b { font-family: var(--display); font-weight: 600; font-size: 1rem; }
+.mega-links span { font-size: .875rem; color: var(--muted); }
+.mega-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.mega-cols ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 2px; }
+.mega-cols a { display: block; padding: 5px 0; text-decoration: none; color: var(--ink); font-size: 1rem; transition: color .2s ease, transform .2s ease; }
+.mega-cols a:hover { color: var(--petrol); transform: translateX(4px); }
+.mega-feature { display: grid; gap: 6px; text-decoration: none; color: var(--ink); align-content: start; }
+.mega-feature b { font-family: var(--display); font-weight: 600; font-size: 1.05rem; }
+.mega-feature .arch { aspect-ratio: 16 / 10; border-radius: 160px 160px 0 0; margin-bottom: 8px; }
+.mini-map { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px; margin-bottom: 8px; display: grid; place-items: center; }
+.mini-map svg { width: 100%; max-height: 190px; }
+.mini-map path { fill: var(--mineral); stroke: #9cbfb6; stroke-width: 3; }
+.mini-map circle { fill: var(--petrol); stroke: var(--white); stroke-width: 7; transition: fill .2s ease; }
+.mega-map:hover circle { fill: var(--gold); }
+.mega-element .tile { width: 150px; aspect-ratio: 1; border: 2px solid var(--gold); border-radius: 6px; padding: 12px; display: grid; grid-template-rows: auto 1fr auto auto; font-family: var(--display); color: var(--ink); }
+.mega-element .tile b { font-size: 3rem; line-height: 1; align-self: center; }
+.mega-element .tile em { font-style: normal; color: var(--petrol); font-size: .8rem; }
+.mega-event .date { font-family: var(--display); text-align: center; border: 2px solid var(--gold); border-radius: 999px 999px 0 0; padding: 18px 16px 12px; width: 130px; margin-bottom: 8px; transition: background .2s ease; }
+.mega-event .date b { display: block; font-size: 1.6rem; color: var(--petrol); line-height: 1; }
+.mega-event .date span { font-size: .875rem; color: var(--muted); }
+.mega-event:hover .date { background: #fbf3e2; }
+.menu-sub { display: grid; padding-left: 16px; }
+.menu-sub a { font-weight: 400 !important; font-size: .9375rem; }
+
+/* ===== Kopfzeile beim Scrollen ===== */
+.site-head .wrap { transition: min-height .25s ease; }
+.brand svg { transition: width .25s ease; }
+.site-head.is-scrolled { box-shadow: 0 6px 18px -14px rgba(16, 46, 44, .5); }
+.site-head.is-scrolled > .wrap { min-height: 62px; }
+.site-head.is-scrolled .brand svg { width: 196px; }
+
+/* ===== Hover-Zoom: nur bei anklickbaren Bildern ===== */
+.member .pic img, a.form-card .arch img, .mega-feature .arch img { transition: transform .8s cubic-bezier(.2, .7, .2, 1); }
+.member:hover .pic img, .member:focus-visible .pic img,
+a.form-card:hover .arch img, a.form-card:focus-visible .arch img,
+.mega-feature:hover .arch img { transform: scale(1.06); }
+a.form-card { text-decoration: none; color: var(--ink); }
+a.form-card h3 { transition: color .2s ease; }
+a.form-card:hover h3 { color: var(--petrol); }
+.member, .path { transition: border-color .2s ease, box-shadow .25s ease, transform .25s ease; }
+.member:hover, .path:hover { box-shadow: 0 16px 30px -22px rgba(16, 46, 44, .55); transform: translateY(-3px); }
+.go .arr, .btn .arr { display: inline-block; transition: transform .2s ease; }
+.path:hover .go .arr, .btn:hover .arr, a.form-card:hover .arr { transform: translateX(4px); }
+
+/* ===== Startbild: ruhiges Hineinzoomen beim Laden ===== */
+.hero .arch img { animation: settle 1.6s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+
+/* ===== Einblenden beim Scrollen (nur mit JavaScript) ===== */
+.js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1); }
+.js-reveal .reveal.is-in { opacity: 1; transform: none; }
+
+/* ===== Kartenpunkte ===== */
+.pins-wait .pin { opacity: 0; }
+.pins-drop .pin { animation: pin-drop .45s cubic-bezier(.3, 1.4, .5, 1) backwards; }
+@keyframes pin-drop { from { opacity: 0; transform: translateY(-14px) scale(.6); } to { opacity: 1; transform: none; } }
+.pin { transition: background .15s ease, transform .15s ease; }
+.pin:hover, .pin[aria-expanded="true"] { transform: scale(1.18); }
+
+@media (max-width: 980px) { .mega { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero .arch img, .pins-drop .pin { animation: none; }
+  .js-reveal .reveal { opacity: 1; transform: none; }
+  .member:hover, .path:hover { transform: none; }
+  .member:hover .pic img, a.form-card:hover .arch img, .mega-feature:hover .arch img { transform: none; }
+}

@@ -16,13 +16,23 @@
 </svg>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 {% if draft %}<div class="draft"><b>Vorschau</b> · Entwurf, nicht veröffentlicht · Texte mit Gesundheitsbezug in Prüfung durch die Kanzlei</div>{% endif %}
-<header class="site-head">
+<header class="site-head" id="site-head">
   <div class="wrap">
     <a class="brand" href="{{ root }}index.html" aria-label="EURADON – Verein Europäische Radonheilbäder e. V., zur Startseite">
       <svg viewBox="0 0 {{ logo.W }} {{ logo.H }}" aria-hidden="true"><use href="#eu-logo"/></svg>
     </a>
     <nav class="nav" aria-label="Hauptnavigation">
-      {% for item in nav %}<a href="{{ root }}{{ item.href }}"{% if section == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+      <ul class="nav-list">
+        {% for item in nav %}
+        <li>
+          {% if item.key == "kontakt" %}
+          <a class="nav-top" href="{{ root }}{{ item.href }}"{% if section == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% else %}
+          <button type="button" class="nav-top{% if section == item.key %} is-current{% endif %}" aria-expanded="false" aria-controls="mega-{{ item.key }}">{{ item.label }}<svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
     </nav>
     <div class="lang" aria-label="Sprache">
       <a href="{{ root }}index.html" aria-current="true" lang="de">DE</a>
@@ -32,9 +42,80 @@
     <details class="menu">
       <summary>Menü</summary>
       <nav aria-label="Hauptnavigation mobil">
-        {% for item in nav %}<a href="{{ root }}{{ item.href }}">{{ item.label }}</a>{% endfor %}
+        <a href="{{ root }}radontherapie/index.html">Radontherapie</a>
+        <div class="menu-sub"><a href="{{ root }}radontherapie/sicherheit.html">Sicherheit und Strahlung</a><a href="{{ root }}radontherapie/fragen.html">Häufige Fragen</a></div>
+        <a href="{{ root }}heilbaeder/index.html">Heilbäder und Karte</a>
+        <a href="{{ root }}fachkreise/index.html">Für Fachkreise</a>
+        <a href="{{ root }}verein/index.html">Verein</a>
+        <div class="menu-sub"><a href="{{ root }}verein/tagungen.html">Tagungen</a><a href="{{ root }}verein/mitglied-werden.html">Mitglied werden</a></div>
+        <a href="{{ root }}kontakt.html">Kontakt</a>
       </nav>
     </details>
+  </div>
+
+  <div class="mega" id="mega-radon" hidden>
+    <div class="wrap mega-grid">
+      <div class="mega-links">
+        <a href="{{ root }}radontherapie/index.html"><b>Radon und Radonkur</b><span>Was Radon ist und wie eine Kur abläuft</span></a>
+        <a href="{{ root }}radontherapie/index.html#ablauf"><b>Baden, Stollen, Trinken</b><span>Die drei Anwendungsformen</span></a>
+        <a href="{{ root }}radontherapie/index.html#gegenanzeigen"><b>Für wen nicht geeignet</b><span>Gegenanzeigen im Überblick</span></a>
+        <a href="{{ root }}radontherapie/sicherheit.html"><b>Sicherheit und Strahlung</b><span>Was Sie über Radon als Strahlenquelle wissen sollten</span></a>
+        <a href="{{ root }}radontherapie/fragen.html"><b>Häufige Fragen</b><span>Kurze Antworten</span></a>
+      </div>
+      <a class="mega-feature" href="{{ root }}radontherapie/index.html#ablauf">
+        <div class="arch"><img src="{{ root }}img/heilstollen-2-800.jpg" alt="" loading="lazy"></div>
+        <span class="eyebrow">Anwendung</span>
+        <b>Eine Kur im Heilstollen</b>
+      </a>
+    </div>
+  </div>
+
+  <div class="mega" id="mega-baeder" hidden>
+    <div class="wrap mega-grid">
+      <div class="mega-cols">
+        {% for code, label in laender.items() %}
+        <div>
+          <span class="eyebrow">{{ label }}</span>
+          <ul>{% for o in orte if o.land == code %}<li><a href="{{ root }}heilbaeder/{{ o.slug }}.html">{{ o.name }}</a></li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      <a class="mega-feature mega-map" href="{{ root }}heilbaeder/index.html">
+        <div class="mini-map" aria-hidden="true">
+          <svg viewBox="0 0 {{ karte.width }} {{ karte.height }}">{% for c in karte.countries if c.member %}<path d="{{ c.d }}"/>{% endfor %}{% for p in pins %}<circle cx="{{ p.x }}" cy="{{ p.y }}" r="{{ 30 if p.orte|length > 1 else 22 }}"/>{% endfor %}</svg>
+        </div>
+        <span class="eyebrow">Übersicht</span>
+        <b>Alle Heilbäder auf der Karte</b>
+      </a>
+    </div>
+  </div>
+
+  <div class="mega" id="mega-fach" hidden>
+    <div class="wrap mega-grid">
+      <div class="mega-links">
+        <a href="{{ root }}fachkreise/index.html#studien"><b>Studien im Überblick</b><span>Design, Ergebnis und Grenzen jeder Studie</span></a>
+        <a href="{{ root }}fachkreise/index.html#vortraege"><b>Vorträge und Arbeiten</b><span>Beiträge der EURADON-Tagungen</span></a>
+        <a href="{{ root }}fachkreise/index.html#literatur"><b>Literatur</b><span>Publikationen zur Radonbalneologie</span></a>
+      </div>
+      <div class="mega-feature mega-element" aria-hidden="true">
+        <div class="tile"><span>86</span><b>Rn</b><span>Radon</span><em>222</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mega" id="mega-verein" hidden>
+    <div class="wrap mega-grid">
+      <div class="mega-links">
+        <a href="{{ root }}verein/index.html"><b>Über uns</b><span>Aufgaben, Vorstand und Geschichte seit 1987</span></a>
+        <a href="{{ root }}verein/tagungen.html"><b>Tagungen</b><span>Herbsttagung 2026 und Rückblick</span></a>
+        <a href="{{ root }}verein/mitglied-werden.html"><b>Mitglied werden</b><span>Was der Verein Radonheilbädern bietet</span></a>
+      </div>
+      <a class="mega-feature mega-event" href="{{ root }}verein/tagungen.html">
+        <div class="date"><b>Nov.</b><span>2026</span></div>
+        <span class="eyebrow">Nächster Termin</span>
+        <b>Herbsttagung 2026</b>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -87,6 +168,7 @@
     </div>
   </div>
 </footer>
+<script src="{{ root }}js/site.js" defer></script>
 {% block scripts %}{% endblock %}
 </body>
 </html>
