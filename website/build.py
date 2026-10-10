@@ -4,6 +4,7 @@ Aufruf:  python3 build.py            (Vorschau mit Entwurfs-Hinweis)
          python3 build.py --live     (ohne Entwurfs-Hinweis, für die Veröffentlichung)
 """
 import json
+import math
 import shutil
 import sys
 from datetime import date
@@ -40,13 +41,48 @@ PAGES = [
 ]
 
 
+def map_pins(karte, orte, merge_px=20):
+    """Projiziert die Orte auf die Karte und fasst sehr nahe Orte zu einem Pin zusammen."""
+    pr = karte["projection"]
+    pins = []
+    for o in orte:
+        x = (o["lon"] - pr["lon_min"]) * math.cos(math.radians(pr["lat0"])) * pr["k"]
+        y = (pr["lat_max"] - o["lat"]) * pr["k"]
+        near = next((p for p in pins if math.hypot(p["x"] - x, p["y"] - y) < merge_px), None)
+        if near:
+            near["orte"].append(o)
+            n = len(near["orte"])
+            near["x"] = (near["x"] * (n - 1) + x) / n
+            near["y"] = (near["y"] * (n - 1) + y) / n
+        else:
+            pins.append({"x": x, "y": y, "orte": [o]})
+    for p in pins:
+        p["left"] = round(p["x"] / karte["width"] * 100, 2)
+        p["top"] = round(p["y"] / karte["height"] * 100, 2)
+        p["label"] = "Gasteinertal" if len(p["orte"]) > 1 and all(o["region"].endswith("Salzburger Land") for o in p["orte"]) else p["orte"][0]["name"]
+    return pins
+
+
+def map_labels(karte):
+    pr = karte["projection"]
+    spots = [("Deutschland", 12.05, 51.55, True), ("Tschechien", 15.1, 49.55, True), ("Österreich", 15.35, 47.75, True),
+             ("Polen", 15.75, 51.75, False), ("Italien", 12.0, 46.82, False)]
+    out = []
+    for name, lon, lat, member in spots:
+        x = (lon - pr["lon_min"]) * math.cos(math.radians(pr["lat0"])) * pr["k"]
+        y = (pr["lat_max"] - lat) * pr["k"]
+        out.append({"name": name, "x": round(x, 1), "y": round(y, 1), "member": member})
+    return out
+
+
 def main():
     draft = "--live" not in sys.argv
     logo = json.loads((HERE / "content/logo.json").read_text(encoding="utf-8"))
     orte = json.loads((HERE / "content/mitglieder.json").read_text(encoding="utf-8"))["orte"]
+    karte = json.loads((HERE / "content/karte.json").read_text(encoding="utf-8"))
 
     env = Environment(loader=FileSystemLoader(HERE / "templates"), undefined=StrictUndefined, autoescape=True)
-    base = {"logo": logo, "nav": NAV, "laender": LAENDER, "orte": orte, "draft": draft, "year": date.today().year}
+    base = {"logo": logo, "nav": NAV, "laender": LAENDER, "orte": orte, "karte": karte, "pins": map_pins(karte, orte), "map_labels": map_labels(karte), "draft": draft, "year": date.today().year}
 
     if DIST.exists():
         shutil.rmtree(DIST)

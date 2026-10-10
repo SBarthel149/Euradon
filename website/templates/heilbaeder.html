@@ -5,6 +5,44 @@
 
 <section class="section">
   <div class="wrap">
+    <div class="section-head">
+      <h2>Karte der Mitglieder</h2>
+      <p class="muted">Fahren Sie mit der Maus über einen Punkt oder tippen Sie ihn an, um Ort, Anbieter und Website zu sehen.</p>
+    </div>
+    <div class="map-layout">
+    <div class="map" id="map">
+      <svg viewBox="0 0 {{ karte.width }} {{ karte.height }}" role="img" aria-label="Karte von Deutschland, Österreich und Tschechien mit den Orten der Mitglieder">
+        <rect width="{{ karte.width }}" height="{{ karte.height }}" class="map-sea"/>
+        {% for c in karte.countries if not c.member %}<path d="{{ c.d }}" class="map-nb"/>{% endfor %}
+        {% for c in karte.countries if c.member %}<path d="{{ c.d }}" class="map-land"/>{% endfor %}
+        {% for l in map_labels %}<text x="{{ l.x }}" y="{{ l.y }}" class="{{ 'map-label' if l.member else 'map-label nb' }}" text-anchor="middle">{{ l.name }}</text>{% endfor %}
+      </svg>
+      {% for p in pins %}
+      <button type="button" class="pin{% if p.orte|length > 1 %} multi{% endif %}" style="left:{{ p.left }}%;top:{{ p.top }}%" data-pop="pop-{{ loop.index }}" aria-expanded="false" aria-controls="pop-{{ loop.index }}" aria-label="{{ p.label }}{% if p.orte|length > 1 %}, {{ p.orte|length }} Orte{% endif %}">{% if p.orte|length > 1 %}{{ p.orte|length }}{% endif %}</button>
+      <div class="pop" id="pop-{{ loop.index }}" role="dialog" aria-label="{{ p.label }}" hidden>
+        {% for o in p.orte %}
+        <div class="pop-ort">
+          <b>{{ o.name }}</b>
+          <span class="pop-reg">{{ o.region }}</span>
+          {% for a in o.anbieter %}<a href="https://{{ a.web }}" rel="noopener" target="_blank">{{ a.web }}</a>{% endfor %}
+          <a class="pop-more" href="{{ root }}heilbaeder/{{ o.slug }}.html">Profil ansehen →</a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <ul class="map-list" aria-label="Orte auf der Karte">
+      {% for p in pins %}
+      <li><button type="button" data-for="pop-{{ loop.index }}"><b>{{ p.label }}</b><span>{% if p.orte|length > 1 %}{{ p.orte|map(attribute="name")|join(", ") }}{% else %}{{ p.orte[0].region }}{% endif %}</span></button></li>
+      {% endfor %}
+    </ul>
+    </div>
+    <p class="small muted" style="margin-top:10px">Kartengrundlage: Natural Earth</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
     <div class="filter" role="group" aria-label="Nach Land filtern">
       <button type="button" data-land="alle" aria-pressed="true">Alle</button>
       {% for code, label in laender.items() %}<button type="button" data-land="{{ code }}" aria-pressed="false">{{ label }}</button>{% endfor %}
@@ -27,6 +65,65 @@
 </section>
 {% endblock %}
 {% block scripts %}
+<script>
+(function () {
+  var map = document.getElementById('map');
+  if (!map) return;
+  var pins = map.querySelectorAll('.pin');
+  var open = null, pinned = false, timer = null;
+  function place(pin, pop) {
+    pop.hidden = false;
+    var m = map.getBoundingClientRect(), p = pin.getBoundingClientRect(), w = pop.offsetWidth, h = pop.offsetHeight;
+    var cx = p.left - m.left + p.width / 2, top = p.top - m.top, bottom = top + p.height;
+    var x, y;
+    if (m.width < 560) {
+      // schmale Karte: Fenster über oder unter dem Punkt, nie darauf
+      x = Math.min(Math.max(cx - w / 2, 8), m.width - w - 8);
+      y = (bottom + 8 + h <= m.height - 8) ? bottom + 8 : top - h - 8;
+    } else {
+      x = cx + 18;
+      if (x + w > m.width - 8) x = cx - 18 - w;
+      y = Math.min(Math.max(top - 10, 8), m.height - h - 8);
+    }
+    pop.style.left = x + 'px'; pop.style.top = y + 'px';
+  }
+  function show(pin) {
+    clearTimeout(timer);
+    if (open && open.pin !== pin) hide(true);
+    var pop = document.getElementById(pin.dataset.pop);
+    place(pin, pop);
+    pin.setAttribute('aria-expanded', 'true');
+    open = { pin: pin, pop: pop };
+  }
+  function hide(now) {
+    if (!open) return;
+    var o = open;
+    var go = function () { o.pop.hidden = true; o.pin.setAttribute('aria-expanded', 'false'); if (open === o) { open = null; pinned = false; } };
+    if (now) go(); else timer = setTimeout(go, 250);
+  }
+  pins.forEach(function (pin) {
+    var pop = document.getElementById(pin.dataset.pop);
+    pin.addEventListener('mouseenter', function () { if (!pinned) show(pin); });
+    pin.addEventListener('mouseleave', function () { if (!pinned) hide(false); });
+    pin.addEventListener('focus', function () { show(pin); });
+    pin.addEventListener('click', function () {
+      if (open && open.pin === pin && pinned) { hide(true); return; }
+      show(pin); pinned = true;
+    });
+    pop.addEventListener('mouseenter', function () { clearTimeout(timer); });
+    pop.addEventListener('mouseleave', function () { if (!pinned) hide(false); });
+  });
+  document.querySelectorAll('.map-list button').forEach(function (b) {
+    var pin = map.querySelector('.pin[data-pop="' + b.dataset.for + '"]');
+    b.addEventListener('mouseenter', function () { if (!pinned) show(pin); });
+    b.addEventListener('mouseleave', function () { if (!pinned) hide(false); });
+    b.addEventListener('click', function (e) { e.stopPropagation(); show(pin); pinned = true; if (window.innerWidth < 980) map.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { var p = open.pin; hide(true); p.focus(); } });
+  document.addEventListener('click', function (e) { if (open && !map.contains(e.target)) hide(true); });
+  window.addEventListener('resize', function () { if (open) place(open.pin, open.pop); });
+})();
+</script>
 <script>
 (function () {
   var buttons = document.querySelectorAll('.filter button');
