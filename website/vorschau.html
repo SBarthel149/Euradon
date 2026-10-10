@@ -1,0 +1,65 @@
+<title>EURADON Website-Vorschau</title>
+<style>
+/* Layout: a slim control bar above a framed live preview of the built site; the frame width switches between desktop, tablet and phone. */
+:root { --bg: #eef1ef; --surface: #ffffff; --fg: #102e2c; --muted: #4a5a57; --line: #d6dcd9; --accent: #0f6b66; --accent-ink: #ffffff; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #0d1716; --surface: #142220; --fg: #e4eeec; --muted: #9db2ae; --line: #284340; --accent: #4fb8ad; --accent-ink: #0d1716; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: #0d1716; --surface: #142220; --fg: #e4eeec; --muted: #9db2ae; --line: #284340; --accent: #4fb8ad; --accent-ink: #0d1716; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; display: grid; grid-template-rows: auto 1fr; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar strong { font-size: .9375rem; }
+.bar label { font-size: .8125rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+select { font: inherit; font-size: .875rem; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); max-width: 100%; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; padding: 2px; }
+.seg button { font: inherit; font-size: .8125rem; border: 0; background: transparent; color: var(--fg); padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.bar a { font-size: .8125rem; color: var(--accent); margin-left: auto; }
+.stage { overflow: auto; padding: 16px; display: flex; justify-content: center; }
+iframe { border: 1px solid var(--line); background: #faf8f3; border-radius: 10px; width: 100%; height: 100%; min-height: 70vh; transition: width .2s ease; box-shadow: 0 12px 32px -20px rgba(0,0,0,.4); }
+@media (prefers-reduced-motion: reduce) { iframe { transition: none; } }
+</style>
+
+<div class="bar">
+  <strong>EURADON · Website-Vorschau</strong>
+  <label for="page">Seite
+    <select id="page">
+      <option value="index.html">Startseite</option>
+      <option value="radontherapie/index.html">Radon und Radonkur</option>
+      <option value="radontherapie/sicherheit.html">Sicherheit und Strahlung</option>
+      <option value="radontherapie/fragen.html">Häufige Fragen</option>
+      <option value="heilbaeder/index.html">Heilbäder</option>
+      <option value="heilbaeder/bad-brambach.html">Heilbad: Bad Brambach</option>
+      <option value="heilbaeder/bad-schlema.html">Heilbad: Bad Schlema</option>
+      <option value="fachkreise/index.html">Für Fachkreise</option>
+      <option value="verein/index.html">Über uns</option>
+      <option value="verein/tagungen.html">Tagungen</option>
+      <option value="verein/mitglied-werden.html">Mitglied werden</option>
+      <option value="kontakt.html">Kontakt</option>
+      <option value="impressum.html">Impressum</option>
+      <option value="datenschutz.html">Datenschutz</option>
+    </select>
+  </label>
+  <div class="seg" role="group" aria-label="Bildschirmbreite">
+    <button type="button" data-w="100%" aria-pressed="true">Desktop</button>
+    <button type="button" data-w="820px" aria-pressed="false">Tablet</button>
+    <button type="button" data-w="390px" aria-pressed="false">Handy</button>
+  </div>
+  <a id="open" href="site/index.html" target="_blank" rel="noopener">Seite einzeln öffnen</a>
+</div>
+<div class="stage"><iframe id="frame" src="site/index.html" title="Vorschau der EURADON-Website"></iframe></div>
+
+<script>
+(function () {
+  var frame = document.getElementById('frame');
+  var select = document.getElementById('page');
+  var open = document.getElementById('open');
+  select.addEventListener('change', function () { frame.src = 'site/' + select.value; open.href = 'site/' + select.value; });
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      frame.style.width = b.dataset.w;
+    });
+  });
+})();
+</script>

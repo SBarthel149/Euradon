@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Heilbäder", "Die zwölf Mitglieder von EURADON an elf Orten in Deutschland, Österreich und Tschechien.", [{"label": "Heilbäder"}]) }}
+
+<section class="section">
+  <div class="wrap">
+    <div class="filter" role="group" aria-label="Nach Land filtern">
+      <button type="button" data-land="alle" aria-pressed="true">Alle</button>
+      {% for code, label in laender.items() %}<button type="button" data-land="{{ code }}" aria-pressed="false">{{ label }}</button>{% endfor %}
+    </div>
+    <div class="members" id="members">
+      {% for o in orte %}
+      <a class="member" href="{{ root }}heilbaeder/{{ o.slug }}.html" data-land="{{ o.land }}">
+        <div class="pic">{% if o.fotos %}{{ m.photo(root, o.fotos[0].datei, o.fotos[0].alt, "(max-width: 620px) 100vw, 33vw") }}{% else %}{{ m.placeholder("Foto folgt") }}{% endif %}</div>
+        <div class="txt">
+          <span class="country">{{ laender[o.land] }}</span>
+          <h3>{{ o.name }}</h3>
+          <span class="reg">{{ o.region }}</span>
+          <span class="tag">{{ o.anwendung }}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="small muted" style="margin-top:28px">Die Angaben stammen von den Mitgliedern. Für Angebote, Preise und Buchungen wenden Sie sich bitte direkt an das jeweilige Heilbad.</p>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.filter button');
+  var cards = document.querySelectorAll('#members .member');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      cards.forEach(function (c) { c.hidden = b.dataset.land !== 'alle' && c.dataset.land !== b.dataset.land; });
+    });
+  });
+})();
+</script>
+{% endblock %}

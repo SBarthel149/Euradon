@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Kontakt", "Fragen zum Verein, zu Informationsmaterial oder zur Mitgliedschaft beantwortet die Geschäftsstelle.", [{"label": "Kontakt"}]) }}
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="card">
+      <h3>Geschäftsstelle</h3>
+      <p>EURADON – Verein Europäische Radonheilbäder e. V.<br>Prof.-Dr.-Boris-Rajewsky-Straße 4<br>08280 Aue-Bad Schlema<br>Deutschland</p>
+      <p>E-Mail: info@euradon.de</p>
+      {{ m.pending("Telefonnummer und E-Mail-Adresse werden noch festgelegt.") }}
+    </div>
+    <div class="prose">
+      <h2>Fragen zu einer Radonkur?</h2>
+      <p>Für Fragen zu Angeboten, Preisen und Buchungen wenden Sie sich bitte direkt an das jeweilige <a href="{{ root }}heilbaeder/index.html">Heilbad</a>.</p>
+      <p>Ob eine Radonkur für Sie infrage kommt, besprechen Sie bitte mit Ihrer Ärztin oder Ihrem Arzt. Der Verein gibt keine medizinische Beratung.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Datenschutz", "", [{"label": "Datenschutz"}]) }}
+
+<section class="section">
+  <div class="wrap prose">
+    {{ m.pending("Die vollständige Datenschutzerklärung wird erstellt, sobald der Hosting-Anbieter feststeht. Sie sollte vor der Veröffentlichung geprüft werden.") }}
+    <h2>Was diese Website technisch tut</h2>
+    <ul>
+      <li>Keine Cookies, kein Tracking, keine Analyse-Werkzeuge.</li>
+      <li>Schriften und Bilder liegen auf dem eigenen Server. Es werden keine Inhalte von Google oder anderen Drittanbietern geladen.</li>
+      <li>Der Hosting-Anbieter speichert technisch notwendige Zugriffsdaten (Server-Logfiles).</li>
+      <li>Kein Kontaktformular. Wer uns per E-Mail schreibt, dessen Angaben verwenden wir nur zur Beantwortung.</li>
+    </ul>
+    <h2>Verantwortlich</h2>
+    <p>EURADON – Verein Europäische Radonheilbäder e. V., Prof.-Dr.-Boris-Rajewsky-Straße 4, 08280 Aue-Bad Schlema, info@euradon.de</p>
+  </div>
+</section>
+{% endblock %}

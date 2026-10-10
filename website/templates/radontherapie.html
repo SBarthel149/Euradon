@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Radon und Radonkur", "Was Radon ist, wie eine Radonkur abläuft und für wen sie nicht geeignet ist.", [{"label": "Radontherapie"}]) }}
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="prose">
+      <h2>Was ist Radon?</h2>
+      <p>Radon, genauer Radon-222, ist ein natürliches radioaktives Gas. Es ist farblos, geruchlos und geschmacklos. Als Edelgas geht es keine chemischen Verbindungen mit Stoffen im Körper ein.</p>
+      <p>Radon entsteht in der Erdkruste beim Zerfall von Radium, das wiederum aus Uran hervorgeht. Seine physikalische Halbwertszeit beträgt 3,8 Tage. In Regionen mit uranhaltigem Gestein, etwa im Erzgebirge, im Fichtelgebirge oder in den Hohen Tauern, tritt es in Quellwasser und Stollenluft besonders konzentriert auf.</p>
+      <p>Radon sendet beim Zerfall Alphastrahlung aus. Diese Strahlung ist energiereich, dringt aber nur sehr kurz in Gewebe ein.</p>
+    </div>
+    <div class="card" style="align-self:start">
+      <span class="eyebrow">Steckbrief</span>
+      <table style="min-width:0">
+        <tbody>
+          <tr><th scope="row">Symbol</th><td>Rn, Element 86</td></tr>
+          <tr><th scope="row">Art</th><td>Edelgas, radioaktiv</td></tr>
+          <tr><th scope="row">Isotop</th><td>Radon-222</td></tr>
+          <tr><th scope="row">Halbwertszeit</th><td class="num">3,8 Tage</td></tr>
+          <tr><th scope="row">Mutternuklid</th><td>Radium-226</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>So läuft eine Radonkur ab</h2>
+      <p class="muted">Eine Radonkur dauert meist zwei bis vier Wochen. In der Regel werden acht bis zwölf Anwendungen ärztlich verordnet.</p>
+    </div>
+    <div class="forms">
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "wannenbad", "Mann liegt entspannt in einer Badewanne", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Wannenbad</h3>
+        <p>Sie baden in radonhaltigem Wasser. Das Gas gelangt vor allem über die Haut in den Körper, ein Teil wird eingeatmet. Oft wird die Wanne abgedeckt, damit weniger Radon in die Raumluft entweicht.</p>
+      </div>
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "heilstollen-2", "Frau liegt auf einer Holzliege im Felsstollen", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Heilstollen</h3>
+        <p>Sie ruhen leicht bekleidet in einem Stollen mit radonhaltiger Luft. Radon wird eingeatmet und über die Haut aufgenommen. Wer unter Platzangst leidet, sollte diese Form meiden.</p>
+      </div>
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "brambach-wettinquelle", "Frau mit Trinkglas vor der Wettin-Quelle", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Trinkkur</h3>
+        <p>Sie trinken radonhaltiges Wasser. Das Radon wird über Magen und Darm aufgenommen und gelangt in den Blutkreislauf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="prose">
+      <h2>Wofür wird Radon eingesetzt?</h2>
+      <p>Radon wird in der Bädermedizin vor allem bei Schmerzen des Bewegungsapparates eingesetzt, etwa bei Morbus Bechterew, rheumatoider Arthritis und degenerativen Erkrankungen der Wirbelsäule.</p>
+      <p>Es gibt dazu klinische Studien. Ob sie die Wirksamkeit ausreichend belegen, ist in der Wissenschaft umstritten. Die wichtigsten Studien mit ihren Ergebnissen und Grenzen finden Sie im Bereich <a href="{{ root }}fachkreise/index.html">Für Fachkreise</a>.</p>
+      <p>Eine Radonkur ersetzt keine ärztliche Behandlung.</p>
+    </div>
+    <div class="prose">
+      <h2>Für wen ist eine Radonkur nicht geeignet?</h2>
+      <ul>
+        <li>Schwangere</li>
+        <li>Menschen mit einer Überfunktion der Schilddrüse</li>
+        <li>Menschen mit akuten Erkrankungen</li>
+        <li>Nach einer Krebserkrankung nur nach individueller ärztlicher Entscheidung</li>
+        <li>Bei Kindern und Jugendlichen entscheidet die behandelnde Ärztin oder der behandelnde Arzt</li>
+        <li>Für den Heilstollen: Menschen mit Platzangst</li>
+      </ul>
+      <p>Über Nutzen und Risiko einer Radonkur entscheiden Sie gemeinsam mit Ihrer Ärztin oder Ihrem Arzt. Lesen Sie dazu auch <a href="{{ root }}radontherapie/sicherheit.html">Sicherheit und Strahlung</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">{{ m.doctor_note() }}</div>
+</section>
+{% endblock %}

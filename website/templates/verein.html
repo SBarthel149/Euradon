@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Über uns", "EURADON verbindet Radonheilbäder in Deutschland, Österreich und Tschechien und ist die Sektion Radon im Europäischen Heilbäderverband.", [{"label": "Verein"}]) }}
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="prose">
+      <h2>Unsere Aufgaben</h2>
+      <ul>
+        <li>Wir fördern die wissenschaftliche Forschung zur Radonbalneologie.</li>
+        <li>Wir informieren Öffentlichkeit und Ärzteschaft sachlich über die Radontherapie, ihre Grenzen und ihre Risiken.</li>
+        <li>Wir bieten unseren Mitgliedern regelmäßige Tagungen für den fachlichen Austausch.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="eyebrow">Vorstand und Geschäftsstelle</span>
+      <p><b>Vorsitzende</b><br>Dr. Kathrin Bösecke-Spapens</p>
+      <p><b>Geschäftsstelle</b><br>Prof.-Dr.-Boris-Rajewsky-Straße 4<br>08280 Aue-Bad Schlema<br>info@euradon.de</p>
+      <p class="small muted">Weitere Vorstandsmitglieder werden ergänzt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Geschichte</h2></div>
+    <ol class="timeline">
+      <li><b>1987</b>Gründung der Arbeitsgemeinschaft Europäischer Radonheilbäder in Bad Hofgastein.</li>
+      <li><b>1988</b>Gründung als Gesellschaft bürgerlichen Rechts durch Kurbetriebe aus Bad Kreuznach, Bad Münster am Stein-Ebernburg, Bad Steben, Bad Hofgastein, Badgastein und Bad Zell. Die Geschäftsstelle sitzt bis 1993 in Bad Steben.</li>
+      <li><b>1993</b>Die Geschäftsstelle zieht nach Bad Kreuznach.</li>
+      <li><b>2001</b>Die Geschäftsstelle zieht nach Bad Schlema, wo sie bis heute ist.</li>
+      <li><b>2003 bis 2007</b>Der Verein vergibt dreimal einen Wissenschaftspreis für Arbeiten zur Radonbalneologie: 2003 an Dr. Thomas Franke und Prof. Dr. Albrecht Falkenbach, 2005 einen Förderpreis an die Heilbad AG Jáchymov und Dr. Günter Just, 2007 an Dr. Annegret Franke und Dr. Lothar Reiner.</li>
+      <li><b>2006</b>Der Europäische Heilbäderverband führt die Arbeitsgemeinschaft als Sektion Radon.</li>
+      <li><b>2007</b>Die Arbeitsgemeinschaft wird in den Verein EURADON – Verein Europäische Radonheilbäder e. V. überführt, gegründet in St. Blasien-Menzenschwand.</li>
+      <li><b>2026</b>Neuer Auftritt mit Website in Deutsch, Englisch und Tschechisch.</li>
+    </ol>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Häufige Fragen", "Kurze Antworten auf Fragen, die uns oft gestellt werden.", [{"label": "Radontherapie", "href": "radontherapie/index.html"}, {"label": "Häufige Fragen"}]) }}
+
+<section class="section">
+  <div class="wrap">
+    <div class="faq">
+      <details open>
+        <summary>Was ist Radon?</summary>
+        <div><p>Radon ist ein natürliches, radioaktives Edelgas. Es entsteht in der Erdkruste beim Zerfall von Radium und ist farblos, geruchlos und geschmacklos. <a href="{{ root }}radontherapie/index.html">Mehr zu Radon</a></p></div>
+      </details>
+      <details>
+        <summary>Wo tritt Radon auf?</summary>
+        <div><p>Überall im Boden und in der Luft, in sehr unterschiedlicher Menge. Besonders viel Radon gibt es dort, wo uranhaltiges Gestein vorkommt, zum Beispiel im Erzgebirge, im Fichtelgebirge, im Bayerischen Wald, in den Hohen Tauern und im Mühlviertel. Dort liegen auch viele Radonheilbäder.</p></div>
+      </details>
+      <details>
+        <summary>Wie läuft eine Radonkur ab?</summary>
+        <div><p>Je nach Ort baden Sie in radonhaltigem Wasser, ruhen in einem Heilstollen oder trinken radonhaltiges Wasser. Eine Kur dauert meist zwei bis vier Wochen mit acht bis zwölf ärztlich verordneten Anwendungen.</p></div>
+      </details>
+      <details>
+        <summary>Wofür wird Radon eingesetzt?</summary>
+        <div><p>Vor allem bei Schmerzen des Bewegungsapparates, etwa bei Morbus Bechterew, rheumatoider Arthritis und degenerativen Wirbelsäulenerkrankungen. Ob die Studien dazu die Wirksamkeit ausreichend belegen, ist wissenschaftlich umstritten.</p></div>
+      </details>
+      <details>
+        <summary>Ist Radon gefährlich?</summary>
+        <div><p>Radon ist radioaktiv. Wer viele Jahre in Räumen mit hoher Radonkonzentration lebt, hat ein erhöhtes Lungenkrebsrisiko. Auch eine Radonkur bedeutet eine zusätzliche Strahlendosis. Deshalb wägt Ihre Ärztin oder Ihr Arzt Nutzen und Risiko ab. <a href="{{ root }}radontherapie/sicherheit.html">Mehr zu Sicherheit und Strahlung</a></p></div>
+      </details>
+      <details>
+        <summary>Wem ist von einer Radonkur abzuraten?</summary>
+        <div><p>Schwangeren, Menschen mit Schilddrüsenüberfunktion und Menschen mit akuten Erkrankungen. Nach einer Krebserkrankung und bei Kindern und Jugendlichen entscheidet die Ärztin oder der Arzt im Einzelfall. Wer unter Platzangst leidet, sollte den Heilstollen meiden.</p></div>
+      </details>
+      <details>
+        <summary>Wo wird Radontherapie angeboten?</summary>
+        <div><p>Die Mitglieder von EURADON finden Sie mit Kontaktdaten auf der Seite <a href="{{ root }}heilbaeder/index.html">Heilbäder</a>. Weitere Radonkurorte gibt es unter anderem in Bulgarien, Italien, Japan, Russland und der Ukraine.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">{{ m.doctor_note() }}</div>
+</section>
+{% endblock %}

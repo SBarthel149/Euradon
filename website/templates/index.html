@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow">Verein Europäische Radonheilbäder</span>
+      <h1>Radontherapie in Europas Radonheilbädern</h1>
+      <p class="lead">Was Radon ist, wie eine Radonkur abläuft und wo sie angeboten wird: in zwölf Mitgliedsbetrieben an elf Orten in Deutschland, Österreich und Tschechien.</p>
+      <div class="btns">
+        <a class="btn btn-gold" href="{{ root }}heilbaeder/index.html">Heilbad finden</a>
+        <a class="btn btn-line" href="{{ root }}fachkreise/index.html">Für Fachkreise</a>
+      </div>
+    </div>
+    <div class="arch">{{ m.photo(root, "heilstollen-1", "Frau ruht im warm beleuchteten Felsstollen auf einer Liege", "(max-width: 980px) 360px, 440px", True) }}</div>
+  </div>
+</section>
+<div class="stats">
+  <div><b>12</b><span>Mitglieder an 11 Orten</span></div>
+  <div><b>3</b><span>Länder: Deutschland, Österreich, Tschechien</span></div>
+  <div><b>1987</b><span>gegründet in Bad Hofgastein</span></div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Für wen diese Seite ist</span>
+      <h2>Drei Wege zu den Informationen</h2>
+    </div>
+    <div class="paths">
+      <a class="path" href="{{ root }}radontherapie/index.html">
+        <span class="who">Patientinnen und Patienten</span>
+        <h3>Radon und Radonkur verstehen</h3>
+        <p>Was Radon ist, welche Anwendungsformen es gibt, für wen eine Kur nicht geeignet ist und was Sie zur Strahlung wissen sollten.</p>
+        <span class="go">Zur Radontherapie →</span>
+      </a>
+      <a class="path" href="{{ root }}fachkreise/index.html">
+        <span class="who">Ärztinnen und Ärzte</span>
+        <h3>Studien, Vorträge, Literatur</h3>
+        <p>Wissenschaftliche Arbeiten aus dem Umfeld des Vereins, Tagungsbeiträge und Literatur zur Radonbalneologie.</p>
+        <span class="go">Zu den Fachinformationen →</span>
+      </a>
+      <a class="path" href="{{ root }}verein/index.html">
+        <span class="who">Mitglieder und Interessierte</span>
+        <h3>Der Verein EURADON</h3>
+        <p>Geschichte, Aufgaben und Tagungen des Vereins, und wie Radonheilbäder Mitglied werden können.</p>
+        <span class="go">Zum Verein →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Anwendungsformen</span>
+      <h2>Baden, Stollen, Trinken</h2>
+      <p class="muted">Radon wird in den Mitgliedsbetrieben auf drei Arten angewendet. Welche Form ein Ort anbietet, steht auf seiner Profilseite.</p>
+    </div>
+    <div class="forms">
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "wannenbad", "Mann liegt entspannt in einer Badewanne mit radonhaltigem Wasser", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Wannenbad</h3>
+        <p>Baden in radonhaltigem Quell- oder Thermalwasser. Radon gelangt dabei über die Haut und die Atemluft in den Körper.</p>
+      </div>
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "heilstollen-2", "Frau liegt auf einer Holzliege in einem beleuchteten Felsstollen", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Heilstollen</h3>
+        <p>Aufenthalt in einem Stollen mit radonhaltiger, warmer und feuchter Luft. Radon wird eingeatmet und über die Haut aufgenommen.</p>
+      </div>
+      <div class="form-card">
+        <div class="arch">{{ m.photo(root, "brambach-wettinquelle", "Frau mit Trinkglas auf einer Bank vor der Wettin-Quelle in Bad Brambach", "(max-width: 620px) 100vw, 33vw") }}</div>
+        <h3>Trinkkur</h3>
+        <p>Radonhaltiges Wasser wird getrunken. Das Radon gelangt über Magen und Darm in den Blutkreislauf.</p>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:20px">Eine Radonkur dauert meist zwei bis vier Wochen mit acht bis zwölf Anwendungen. <a href="{{ root }}radontherapie/index.html">Mehr zum Ablauf</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="event">
+      <div class="date"><b>Nov.</b><span>2026</span></div>
+      <div>
+        <h3>Herbsttagung 2026</h3>
+        <p>Die nächste Herbsttagung von EURADON findet im November 2026 statt. Ort und Programm folgen.</p>
+      </div>
+      <a class="btn btn-gold" href="{{ root }}verein/tagungen.html">Zu den Tagungen</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">{{ m.doctor_note() }}</div>
+</section>
+{% endblock %}

@@ -1,0 +1,130 @@
+{
+  "_quelle": "Broschüre „10 Fragen zur Radontherapie“, 12. Auflage, Frage 10. Abweichungen zur alten Website siehe konzept/website-konzept.html. Jedes Mitglied soll seine Daten bestätigen.",
+  "orte": [
+    {
+      "slug": "bad-brambach",
+      "name": "Bad Brambach",
+      "land": "DE",
+      "region": "Vogtland, Sachsen",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [
+        {"datei": "brambach-badehaus", "alt": "Heller Ruheraum mit Wasserbecken, Steinbrunnen und Blick ins Grüne"},
+        {"datei": "brambach-wettinquelle", "alt": "Frau mit Trinkglas auf einer Bank vor der Wettin-Quelle"}
+      ],
+      "anbieter": [
+        {"name": "Sächsische Staatsbäder GmbH", "strasse": "Badstraße 47", "ort": "08648 Bad Brambach", "tel": "+49 37438 88-111", "fax": "+49 37438 88-222", "web": "www.saechsische-staatsbaeder.de", "mail": "info@saechsische-staatsbaeder.de"},
+        {"name": "Dr. Ebel Fachkliniken GmbH & Co. Rehabilitationsklinik Bad Brambach KG", "strasse": "Christian-Schüller-Straße 14", "ort": "08648 Bad Brambach", "tel": "+49 37438 96-0", "fax": "+49 37438 96-504", "web": "www.ebel-klinik.de", "mail": "sekretariat@klinik-bad-brambach.de"}
+      ]
+    },
+    {
+      "slug": "bad-schlema",
+      "name": "Bad Schlema",
+      "land": "DE",
+      "region": "Erzgebirge, Sachsen",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Kurgesellschaft Schlema mbH", "strasse": "Richard-Friedrich-Straße 7", "ort": "08280 Aue-Bad Schlema", "tel": "+49 3771 2155-00", "fax": "+49 3771 2155-01", "web": "www.bad-schlema.de", "mail": "info@bad-schlema.de"}
+      ]
+    },
+    {
+      "slug": "bad-schmiedeberg",
+      "name": "Bad Schmiedeberg",
+      "land": "DE",
+      "region": "Dübener Heide, Sachsen-Anhalt",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Eisenmoorbad Bad Schmiedeberg – Kur GmbH", "strasse": "Kurpromenade 1", "ort": "06905 Bad Schmiedeberg", "tel": "+49 34925 6-0", "fax": "+49 34925 6-2900", "web": "www.eisenmoorbad.de", "mail": "verwaltung@eisenmoorbad.de"}
+      ]
+    },
+    {
+      "slug": "bad-steben",
+      "name": "Bad Steben",
+      "land": "DE",
+      "region": "Frankenwald, Bayern",
+      "anwendung": "Radonhaltige Quelle",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Bayerisches Staatsbad Bad Steben GmbH", "strasse": "Badstraße 31", "ort": "95138 Bad Steben", "tel": "+49 9288 960-0", "fax": "+49 9288 960-10", "web": "www.bad-steben.de", "mail": "info@bad-steben.de"}
+      ]
+    },
+    {
+      "slug": "sibyllenbad",
+      "name": "Sibyllenbad",
+      "land": "DE",
+      "region": "Bad Neualbenreuth, Oberpfalz, Bayern",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Kurmittelhaus Sibyllenbad", "strasse": "Kurallee 1", "ort": "95698 Bad Neualbenreuth", "tel": "+49 9638 933-0", "fax": "+49 9638 933-190", "web": "www.sibyllenbad.de", "mail": "info@sibyllenbad.de"}
+      ]
+    },
+    {
+      "slug": "bad-weissenstadt",
+      "name": "Bad Weißenstadt am See",
+      "land": "DE",
+      "region": "Fichtelgebirge, Bayern",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Kurzentrum Bad Weißenstadt am See, Gesundheitshotel Bad Weißenstadt GmbH & Co. KG", "strasse": "Im Quellenpark 1", "ort": "95163 Bad Weißenstadt am See", "tel": "+49 9253 9545-0", "fax": "+49 9253 9545-40", "web": "www.kurzentrum.com", "mail": "weissenstadt@kurzentrum.com"}
+      ]
+    },
+    {
+      "slug": "jachymov",
+      "name": "Jáchymov (St. Joachimsthal)",
+      "land": "CZ",
+      "region": "Erzgebirge, Region Karlsbad",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Léčebné lázně Jáchymov a.s.", "strasse": "T. G. Masaryka 415", "ort": "CZ-36251 Jáchymov", "tel": "+420 353 811-111", "fax": "+420 353 811-730", "web": "www.laznejachymov.cz", "mail": "reservation@radonbadjachymov.de"}
+      ]
+    },
+    {
+      "slug": "bad-gastein",
+      "name": "Bad Gastein",
+      "land": "AT",
+      "region": "Gasteinertal, Salzburger Land",
+      "anwendung": "Radon-Thermalwasser und Dunstbad",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Kur- und Tourismusverband Bad Gastein", "strasse": "Kaiser-Franz-Josef-Straße 27", "ort": "A-5640 Bad Gastein", "tel": "+43 6432 3393-560", "fax": "+43 6432 3393-537", "web": "www.gastein.com/kur", "mail": "badgastein@gastein.at"}
+      ]
+    },
+    {
+      "slug": "bad-hofgastein",
+      "name": "Bad Hofgastein",
+      "land": "AT",
+      "region": "Gasteinertal, Salzburger Land",
+      "anwendung": "Radon-Thermalwasser",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Kur- und Tourismusverband Bad Hofgastein", "strasse": "Tauernplatz 1", "ort": "A-5630 Bad Hofgastein", "tel": "+43 6432 3393-260", "fax": "+43 6432 3393-232", "web": "www.gastein.com/kur", "mail": "badhofgastein@gastein.com"}
+      ]
+    },
+    {
+      "slug": "gasteiner-heilstollen",
+      "name": "Gasteiner Heilstollen",
+      "land": "AT",
+      "region": "Böckstein, Gasteinertal, Salzburger Land",
+      "anwendung": "Radon-Thermalstollen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Gasteiner Kur-, Reha- und Heilstollen Betriebsges.m.b.H.", "strasse": "Heilstollenstraße 19", "ort": "A-5645 Böckstein/Bad Gastein", "tel": "+43 6434 3753-0", "fax": "+43 6434 3753-566", "web": "www.gasteiner-heilstollen.com", "mail": "info@gasteiner-heilstollen.com"}
+      ]
+    },
+    {
+      "slug": "bad-zell",
+      "name": "Bad Zell",
+      "land": "AT",
+      "region": "Mühlviertel, Oberösterreich",
+      "anwendung": "Radonhaltige Quellen",
+      "fotos": [],
+      "anbieter": [
+        {"name": "Gesundheitsresort Lebensquell Bad Zell", "strasse": "Lebensquellplatz 1", "ort": "A-4283 Bad Zell", "tel": "+43 7263 7515", "fax": "+43 7263 7515-509", "web": "www.lebensquell-badzell.at", "mail": "office.hotel@lebensquell-badzell.at"}
+      ]
+    }
+  ]
+}

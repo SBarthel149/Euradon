@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Sicherheit und Strahlung", "Radon ist radioaktiv. Hier steht, was das für eine Radonkur bedeutet und wo Sie unabhängige Informationen finden.", [{"label": "Radontherapie", "href": "radontherapie/index.html"}, {"label": "Sicherheit und Strahlung"}]) }}
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="prose">
+      <h2>Radon ist eine Strahlenquelle</h2>
+      <p>Radon kommt überall in der Erdkruste und in der Luft vor. Jeder Mensch nimmt es über die Atemluft auf. Wie viel, hängt stark vom Wohnort und vom Gebäude ab.</p>
+      <p>Wer über viele Jahre in Räumen mit hoher Radonkonzentration lebt oder arbeitet, hat ein erhöhtes Risiko für Lungenkrebs. Das Bundesamt für Strahlenschutz nennt Radon nach dem Rauchen eine der wichtigsten Ursachen für Lungenkrebs.</p>
+      <p>Bei einer Radonkur ist man dem Gas dagegen nur für einige Wochen und kurze Zeiträume ausgesetzt. Auch dabei erhalten Sie eine zusätzliche Strahlendosis.</p>
+    </div>
+    <div class="prose">
+      <h2>Was das für Sie heißt</h2>
+      <ul>
+        <li>Eine Radonkur ist eine Behandlung mit ionisierender Strahlung, ähnlich wie Röntgenuntersuchungen oder nuklearmedizinische Verfahren.</li>
+        <li>Wie bei jeder solchen Anwendung wägt Ihre Ärztin oder Ihr Arzt Nutzen und Risiko ab.</li>
+        <li>Schwangere, Kinder und Jugendliche sowie Menschen mit bestimmten Vorerkrankungen sind besonders zu schützen. Die Gegenanzeigen finden Sie auf der Seite <a href="{{ root }}radontherapie/index.html">Radon und Radonkur</a>.</li>
+        <li>Rauchen erhöht das Lungenkrebsrisiko durch Radon zusätzlich.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {{ m.pending("Hier folgen Angaben zur Strahlendosis einer Radonkur im Bad und im Heilstollen, jeweils mit Quelle. Die Zahlen werden vor der Veröffentlichung mit aktuellen Angaben des Bundesamts für Strahlenschutz abgeglichen.") }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="card" style="max-width:820px">
+      <h3>Unabhängige Informationen</h3>
+      <p>Das Bundesamt für Strahlenschutz informiert ausführlich über Radon, seine Risiken und den Schutz in Wohnräumen.</p>
+      <p><a href="https://www.bfs.de" rel="noopener">www.bfs.de</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

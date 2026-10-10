@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Impressum", "", [{"label": "Impressum"}]) }}
+
+<section class="section">
+  <div class="wrap prose">
+    {{ m.pending("Entwurf. Registernummer, Telefon und E-Mail werden noch bestätigt, die Angaben nach § 5 Digitale-Dienste-Gesetz sollten vor der Veröffentlichung geprüft werden.") }}
+    <h2>Anbieter</h2>
+    <p>EURADON – Verein Europäische Radonheilbäder e. V.<br>Prof.-Dr.-Boris-Rajewsky-Straße 4<br>08280 Aue-Bad Schlema<br>Deutschland</p>
+    <p>Vertreten durch die Vorsitzende Dr. Kathrin Bösecke-Spapens</p>
+    <p>E-Mail: info@euradon.de</p>
+    <p>Eingetragen im Vereinsregister des Amtsgerichts Chemnitz, VR 20840</p>
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>Dr. Kathrin Bösecke-Spapens, Anschrift wie oben</p>
+    <h2>Externe Links</h2>
+    <p>Diese Website enthält Links zu Websites der Mitglieder und Dritter. Für deren Inhalte sind die jeweiligen Anbieter verantwortlich.</p>
+    <h2>Bildnachweis</h2>
+    <p>Fotos: Mitgliedsbetriebe des Vereins. Einzelnachweise werden ergänzt.</p>
+    <h2>Schriften</h2>
+    <p>Lexend und Atkinson Hyperlegible, SIL Open Font License, lokal eingebunden.</p>
+  </div>
+</section>
+{% endblock %}

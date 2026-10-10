@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Tagungen", "Zweimal im Jahr treffen sich die Mitglieder zum fachlichen Austausch. Die Herbsttagungen sind teilweise öffentlich.", [{"label": "Verein", "href": "verein/index.html"}, {"label": "Tagungen"}]) }}
+
+<section class="section">
+  <div class="wrap">
+    <div class="event">
+      <div class="date"><b>Nov.</b><span>2026</span></div>
+      <div>
+        <h3>Herbsttagung 2026</h3>
+        <p>Ort, Datum und Programm werden hier veröffentlicht, sobald sie feststehen.</p>
+      </div>
+      <a class="btn btn-gold" href="{{ root }}kontakt.html">Kontakt</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><h2>Rückblick</h2></div>
+    <ol class="timeline">
+      <li><b>2021 · Bad Weißenstadt am See</b>Herbsttagung</li>
+      <li><b>2019 · Luhačovice, Tschechien</b>Herbsttagung vom 12. bis 15. September</li>
+      <li><b>2018 · Bad Schlema</b>Herbsttagung mit öffentlichem Radon-Symposium am 6. Oktober, anlässlich „100 Jahre Kurbetrieb im Schlematal“</li>
+      <li><b>2011 · Gastein</b>Herbsttagung mit sieben Fachvorträgen</li>
+      <li><b>2007 · St. Blasien-Menzenschwand</b>Herbsttagung und Gründung des Vereins</li>
+      <li><b>2006 · Jáchymov</b>Frühjahrstreffen</li>
+      <li><b>2005 · Bad Brambach</b>Herbsttagung</li>
+      <li><b>2004 · Bad Kreuznach</b>Herbsttagung</li>
+      <li><b>2003 · Bad Schmiedeberg</b>Herbsttagung</li>
+      <li><b>2002 · Bad Schlema</b>Herbsttagung</li>
+    </ol>
+    <p class="small muted">Gruppenfotos und Programme werden ergänzt.</p>
+  </div>
+</section>
+{% endblock %}

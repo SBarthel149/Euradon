@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}{% if title != "EURADON" %} · EURADON{% endif %}</title>
+<meta name="description" content="{{ description }}">
+{% if draft %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<link rel="stylesheet" href="{{ root }}css/site.css">
+<link rel="icon" href="{{ root }}img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="eu-logo" viewBox="0 0 {{ logo.W }} {{ logo.H }}">{{ logo.sym|safe }}{{ logo.words|safe }}</symbol>
+  <symbol id="eu-zeichen" viewBox="0 0 {{ logo.SW }} {{ logo.H }}">{{ logo.sym|safe }}</symbol>
+</svg>
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+{% if draft %}<div class="draft"><b>Vorschau</b> · Entwurf, nicht veröffentlicht · Texte mit Gesundheitsbezug in Prüfung durch die Kanzlei</div>{% endif %}
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="{{ root }}index.html" aria-label="EURADON – Verein Europäische Radonheilbäder e. V., zur Startseite">
+      <svg viewBox="0 0 {{ logo.W }} {{ logo.H }}" aria-hidden="true"><use href="#eu-logo"/></svg>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      {% for item in nav %}<a href="{{ root }}{{ item.href }}"{% if section == item.key %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+    </nav>
+    <div class="lang" aria-label="Sprache">
+      <a href="{{ root }}index.html" aria-current="true" lang="de">DE</a>
+      <span lang="en" title="English version in preparation">EN</span>
+      <span lang="cs" title="Česká verze se připravuje">CS</span>
+    </div>
+    <details class="menu">
+      <summary>Menü</summary>
+      <nav aria-label="Hauptnavigation mobil">
+        {% for item in nav %}<a href="{{ root }}{{ item.href }}">{{ item.label }}</a>{% endfor %}
+      </nav>
+    </details>
+  </div>
+</header>
+
+<main id="inhalt">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <svg viewBox="0 0 {{ logo.W }} {{ logo.H }}" role="img" aria-label="EURADON – Verein Europäische Radonheilbäder e. V."><use href="#eu-logo"/></svg>
+      <address>
+        Geschäftsstelle<br>
+        Prof.-Dr.-Boris-Rajewsky-Straße 4<br>
+        08280 Aue-Bad Schlema<br>
+        info@euradon.de
+      </address>
+    </div>
+    <div>
+      <h4>Radontherapie</h4>
+      <ul>
+        <li><a href="{{ root }}radontherapie/index.html">Radon und Radonkur</a></li>
+        <li><a href="{{ root }}radontherapie/sicherheit.html">Sicherheit und Strahlung</a></li>
+        <li><a href="{{ root }}radontherapie/fragen.html">Häufige Fragen</a></li>
+        <li><a href="{{ root }}heilbaeder/index.html">Heilbäder</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Verein</h4>
+      <ul>
+        <li><a href="{{ root }}verein/index.html">Über uns</a></li>
+        <li><a href="{{ root }}verein/tagungen.html">Tagungen</a></li>
+        <li><a href="{{ root }}verein/mitglied-werden.html">Mitglied werden</a></li>
+        <li><a href="{{ root }}fachkreise/index.html">Für Fachkreise</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Service</h4>
+      <ul>
+        <li><a href="{{ root }}kontakt.html">Kontakt</a></li>
+        <li><a href="{{ root }}impressum.html">Impressum</a></li>
+        <li><a href="{{ root }}datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <div class="wrap">
+      <span>© {{ year }} EURADON – Verein Europäische Radonheilbäder e. V.</span>
+      <span>Sektion Radon im Europäischen Heilbäderverband</span>
+    </div>
+  </div>
+</footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

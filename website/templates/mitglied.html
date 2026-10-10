@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Mitglied werden", "EURADON steht Radonheilbädern und Einrichtungen offen, die Radon in der Bädermedizin anwenden.", [{"label": "Verein", "href": "verein/index.html"}, {"label": "Mitglied werden"}]) }}
+
+<section class="section">
+  <div class="wrap cols2">
+    <div class="prose">
+      <h2>Was der Verein bietet</h2>
+      <ul>
+        <li>Austausch mit Radonheilbädern aus mehreren Ländern auf den Frühjahrs- und Herbsttagungen</li>
+        <li>Fachvorträge zur Forschung in der Radonbalneologie</li>
+        <li>Ein eigenes Ortsprofil auf dieser Website, in Deutsch, Englisch und Tschechisch</li>
+        <li>Das Mitgliedssiegel für die eigene Website und Drucksachen</li>
+        <li>Gemeinsame Informationsmaterialien wie die Broschüre „10 Fragen zur Radontherapie“</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Sprechen Sie uns an</h3>
+      <p>Die Geschäftsstelle informiert Sie gern über die Mitgliedschaft.</p>
+      <p>EURADON – Verein Europäische Radonheilbäder e. V.<br>Prof.-Dr.-Boris-Rajewsky-Straße 4<br>08280 Aue-Bad Schlema<br>info@euradon.de</p>
+    </div>
+  </div>
+</section>
+{% endblock %}

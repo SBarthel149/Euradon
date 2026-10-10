@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, o.name, o.region ~ " · " ~ laender[o.land], [{"label": "Heilbäder", "href": "heilbaeder/index.html"}, {"label": o.name}]) }}
+
+<section class="section">
+  <div class="wrap profile">
+    <div class="gallery">
+      <div class="arch">{% if o.fotos %}{{ m.photo(root, o.fotos[0].datei, o.fotos[0].alt, "(max-width: 980px) 100vw, 45vw", True) }}{% else %}{{ m.placeholder("Foto folgt") }}{% endif %}</div>
+      {% if o.fotos|length > 1 %}
+      <div class="row">{% for f in o.fotos[1:] %}{{ m.photo(root, f.datei, f.alt, "(max-width: 980px) 50vw, 22vw") }}{% endfor %}</div>
+      {% endif %}
+    </div>
+    <div style="display:grid;gap:24px">
+      <dl class="facts">
+        <dt>Land</dt><dd>{{ laender[o.land] }}</dd>
+        <dt>Region</dt><dd>{{ o.region }}</dd>
+        <dt>Radon</dt><dd>{{ o.anwendung }}</dd>
+        <dt>Mitglieder</dt><dd>{{ o.anbieter|length }}</dd>
+      </dl>
+      {{ m.pending("Eine kurze Beschreibung des Ortes und seiner Anwendungen folgt. Sie wird vom Mitglied geliefert und nach dem Textleitfaden des Vereins geprüft.") }}
+      {% for a in o.anbieter %}
+      <div class="contact-card">
+        <h3>{{ a.name }}</h3>
+        <span>{{ a.strasse }}<br>{{ a.ort }}</span>
+        <span><span class="k">Tel.</span> {{ a.tel }}</span>
+        {% if a.fax %}<span><span class="k">Fax</span> {{ a.fax }}</span>{% endif %}
+        <span><span class="k">E-Mail</span> {{ a.mail }}</span>
+        <span><span class="k">Web</span> <a href="https://{{ a.web }}" rel="noopener">{{ a.web }}</a></span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <p class="small muted" style="max-width:68ch">Für die Inhalte der verlinkten Websites ist das jeweilige Heilbad verantwortlich. Angebote, Preise und Buchungen erhalten Sie direkt beim Anbieter.</p>
+    <p style="margin-top:20px"><a class="btn btn-ink" href="{{ root }}heilbaeder/index.html">← Alle Heilbäder</a></p>
+  </div>
+</section>
+{% endblock %}
