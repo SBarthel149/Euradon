@@ -1,0 +1,23 @@
+[
+  {"frage": "Was ist Radon?",
+   "antwort": "Radon ist ein natürliches, radioaktives Edelgas. Es entsteht in der Erdkruste beim Zerfall von Radium und ist farblos, geruchlos und geschmacklos.",
+   "link": ["radontherapie/index.html#was-ist-radon", "Mehr zu Radon"]},
+  {"frage": "Wo tritt Radon auf?",
+   "antwort": "Überall im Boden und in der Luft, in sehr unterschiedlicher Menge. Besonders viel Radon gibt es dort, wo uranhaltiges Gestein vorkommt, zum Beispiel im Erzgebirge, im Fichtelgebirge, im Bayerischen Wald, in den Hohen Tauern und im Mühlviertel. Dort liegen auch viele Radonheilbäder."},
+  {"frage": "Wie läuft eine Radonkur ab?",
+   "antwort": "Je nach Ort baden Sie in radonhaltigem Wasser, ruhen in einem Heilstollen oder trinken radonhaltiges Wasser. Eine Kur dauert meist zwei bis vier Wochen mit acht bis zwölf ärztlich verordneten Anwendungen.",
+   "link": ["radontherapie/index.html#ablauf", "Mehr zum Ablauf"]},
+  {"frage": "Wofür wird Radon eingesetzt?",
+   "antwort": "Vor allem bei Schmerzen des Bewegungsapparates, etwa bei Morbus Bechterew, rheumatoider Arthritis und degenerativen Wirbelsäulenerkrankungen. Ob die Studien dazu die Wirksamkeit ausreichend belegen, ist wissenschaftlich umstritten."},
+  {"frage": "Ist Radon gefährlich?",
+   "antwort": "Radon ist radioaktiv. Wer viele Jahre in Räumen mit hoher Radonkonzentration lebt, hat ein erhöhtes Lungenkrebsrisiko. Auch eine Radonkur bedeutet eine zusätzliche Strahlendosis. Deshalb wägt Ihre Ärztin oder Ihr Arzt Nutzen und Risiko ab.",
+   "link": ["radontherapie/sicherheit.html", "Mehr zu Sicherheit und Strahlung"]},
+  {"frage": "Wem ist von einer Radonkur abzuraten?",
+   "antwort": "Schwangeren, Menschen mit Schilddrüsenüberfunktion und Menschen mit akuten Erkrankungen. Nach einer Krebserkrankung und bei Kindern und Jugendlichen entscheidet die Ärztin oder der Arzt im Einzelfall. Wer unter Platzangst leidet, sollte den Heilstollen meiden."},
+  {"frage": "Wo wird Radontherapie angeboten?",
+   "antwort": "Die zwölf Mitglieder von EURADON liegen an elf Orten in Deutschland, Österreich und Tschechien. Weitere Radonkurorte gibt es unter anderem in Bulgarien, Italien, Japan, Russland und der Ukraine.",
+   "link": ["heilbaeder/index.html", "Zu den Heilbädern"]},
+  {"frage": "Was ist EURADON?",
+   "antwort": "EURADON – Verein Europäische Radonheilbäder e. V. ist ein Zusammenschluss von Radonheilbädern aus Deutschland, Österreich und Tschechien. Er wurde 1987 in Bad Hofgastein gegründet, hat seine Geschäftsstelle in Aue-Bad Schlema und ist die Sektion Radon im Europäischen Heilbäderverband.",
+   "link": ["verein/index.html", "Mehr über den Verein"]}
+]

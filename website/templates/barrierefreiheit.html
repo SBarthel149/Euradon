@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "macros.html" as m %}
+{% block main %}
+{{ m.pagehead(root, "Erklärung zur Barrierefreiheit", "Wir möchten, dass alle Menschen diese Website nutzen können, unabhängig von Alter, Sehvermögen oder Hilfsmitteln.", [{"label": "Barrierefreiheit"}]) }}
+
+<section class="section">
+  <div class="wrap prose">
+    {{ m.pending("Entwurf. Ob das Barrierefreiheitsstärkungsgesetz für die Website des Vereins verpflichtend gilt, sollte die Kanzlei bestätigen. Unabhängig davon setzen wir die Anforderungen freiwillig um.") }}
+
+    <h2>Welche Anforderungen wir umsetzen</h2>
+    <p>Diese Website soll die Anforderungen der europäischen Norm EN 301 549 und der Web Content Accessibility Guidelines (WCAG) 2.1 auf Stufe AA erfüllen. Diese Standards liegen auch dem Barrierefreiheitsstärkungsgesetz (BFSG) zugrunde.</p>
+
+    <h2>Was diese Website dafür tut</h2>
+    <ul>
+      <li>Gut lesbare Schriften: Atkinson Hyperlegible wurde für Menschen mit eingeschränktem Sehvermögen entwickelt, Fließtext ist mindestens 17 Pixel groß.</li>
+      <li>Ausreichende Farbkontraste für Text und Bedienelemente.</li>
+      <li>Alle Funktionen sind mit der Tastatur bedienbar, auch das Menü und die Karte. Der Fokus ist immer deutlich sichtbar.</li>
+      <li>Ein Link „Zum Inhalt springen“ am Seitenanfang.</li>
+      <li>Eine klare Überschriftenstruktur und beschriftete Bereiche für Screenreader.</li>
+      <li>Alle Fotos haben Bildbeschreibungen. Die Karte der Mitglieder gibt es zusätzlich als Liste.</li>
+      <li>Die Seite lässt sich auf 200 Prozent vergrößern und funktioniert auch auf schmalen Bildschirmen.</li>
+      <li>Wer in den Systemeinstellungen „Bewegung reduzieren“ wählt, sieht keine Animationen.</li>
+      <li>Keine Cookies, keine Einblendungen, keine automatisch abspielenden Inhalte.</li>
+    </ul>
+
+    <h2>Was noch nicht barrierefrei ist</h2>
+    <ul>
+      <li>Die englische und die tschechische Fassung sind in Vorbereitung.</li>
+      <li>Die als PDF angebotenen Dokumente, etwa Vortragszusammenfassungen und die Broschüre, sind noch nicht barrierefrei aufbereitet. Wir stellen sie auf Anfrage in einer zugänglichen Form bereit.</li>
+      <li>Inhalte in Leichter Sprache bieten wir derzeit nicht an.</li>
+    </ul>
+
+    <h2>Barrieren melden</h2>
+    <p>Wenn Sie auf eine Barriere stoßen oder Inhalte in einer anderen Form benötigen, schreiben Sie uns bitte. Wir antworten so schnell wie möglich.</p>
+    <p>EURADON – Verein Europäische Radonheilbäder e. V.<br>Prof.-Dr.-Boris-Rajewsky-Straße 4<br>08280 Aue-Bad Schlema<br>E-Mail: info@euradon.de</p>
+
+    <h2>Zuständige Behörde</h2>
+    <p>Für die Überwachung der Barrierefreiheit nach dem BFSG ist die Marktüberwachungsstelle der Länder für die Barrierefreiheit von Produkten und Dienstleistungen (MLBF) in Magdeburg zuständig.</p>
+
+    <h2>Stand dieser Erklärung</h2>
+    <p>Diese Erklärung wurde im {{ stand_label }} erstellt. Grundlage ist eine Selbstbewertung.</p>
+  </div>
+</section>
+{% endblock %}

@@ -24,7 +24,7 @@
         <div class="pop-ort">
           <b>{{ o.name }}</b>
           <span class="pop-reg">{{ o.region }}</span>
-          {% for a in o.anbieter %}<a href="https://{{ a.web }}" rel="noopener" target="_blank">{{ a.web }}</a>{% endfor %}
+          {% for a in o.anbieter %}<a href="https://{{ a.web }}" rel="noopener">{{ a.web }}</a>{% endfor %}
           <a class="pop-more" href="{{ root }}heilbaeder/{{ o.slug }}.html">Profil ansehen →</a>
         </div>
         {% endfor %}
@@ -47,6 +47,7 @@
       <button type="button" data-land="alle" aria-pressed="true">Alle</button>
       {% for code, label in laender.items() %}<button type="button" data-land="{{ code }}" aria-pressed="false">{{ label }}</button>{% endfor %}
     </div>
+    <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
     <div class="members" id="members">
       {% for o in orte %}
       <a class="member" href="{{ root }}heilbaeder/{{ o.slug }}.html" data-land="{{ o.land }}">
@@ -131,7 +132,9 @@
   buttons.forEach(function (b) {
     b.addEventListener('click', function () {
       buttons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      cards.forEach(function (c) { c.hidden = b.dataset.land !== 'alle' && c.dataset.land !== b.dataset.land; });
+      var n = 0;
+      cards.forEach(function (c) { c.hidden = b.dataset.land !== 'alle' && c.dataset.land !== b.dataset.land; if (!c.hidden) n++; });
+      document.getElementById('filter-status').textContent = n + (n === 1 ? ' Heilbad' : ' Heilbäder') + ' angezeigt';
     });
   });
 })();

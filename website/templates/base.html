@@ -3,11 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ title }}{% if title != "EURADON" %} · EURADON{% endif %}</title>
+<title>{% if path == "index.html" %}EURADON – Verein Europäische Radonheilbäder e. V.{% else %}{{ title }} · EURADON{% endif %}</title>
 <meta name="description" content="{{ description }}">
-{% if draft %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<meta name="robots" content="{{ 'noindex, nofollow' if draft else 'index, follow' }}">
+<link rel="canonical" href="{{ site_url }}{{ canonical_path }}">
+<link rel="alternate" hreflang="de" href="{{ site_url }}{{ canonical_path }}">
+<link rel="alternate" hreflang="x-default" href="{{ site_url }}{{ canonical_path }}">
+<meta name="theme-color" content="#0f6b66">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="EURADON – Verein Europäische Radonheilbäder e. V.">
+<meta property="og:title" content="{{ title if path != 'index.html' else 'EURADON – Verein Europäische Radonheilbäder e. V.' }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site_url }}{{ canonical_path }}">
+<meta property="og:image" content="{{ site_url }}{{ og_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ og_alt }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="{{ root }}fonts/lexend-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ root }}css/site.css">
 <link rel="icon" href="{{ root }}img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ root }}img/apple-touch-icon.png">
+<script type="application/ld+json">{{ jsonld|safe }}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -15,8 +34,8 @@
   <symbol id="eu-zeichen" viewBox="0 0 {{ logo.SW }} {{ logo.H }}">{{ logo.sym|safe }}</symbol>
 </svg>
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
-{% if draft %}<div class="draft"><b>Vorschau</b> · Entwurf, nicht veröffentlicht · Texte mit Gesundheitsbezug in Prüfung durch die Kanzlei</div>{% endif %}
 <header class="site-head" id="site-head">
+  {% if draft %}<div class="draft"><b>Vorschau</b> · Entwurf, nicht veröffentlicht · Texte mit Gesundheitsbezug in Prüfung durch die Kanzlei</div>{% endif %}
   <div class="wrap">
     <a class="brand" href="{{ root }}index.html" aria-label="EURADON – Verein Europäische Radonheilbäder e. V., zur Startseite">
       <svg viewBox="0 0 {{ logo.W }} {{ logo.H }}" aria-hidden="true"><use href="#eu-logo"/></svg>
@@ -36,8 +55,8 @@
     </nav>
     <div class="lang" aria-label="Sprache">
       <a href="{{ root }}index.html" aria-current="true" lang="de">DE</a>
-      <span lang="en" title="English version in preparation">EN</span>
-      <span lang="cs" title="Česká verze se připravuje">CS</span>
+      <span lang="en" aria-disabled="true">EN<span class="sr-only"> (in preparation)</span></span>
+      <span lang="cs" aria-disabled="true">CS<span class="sr-only"> (připravuje se)</span></span>
     </div>
     <details class="menu">
       <summary>Menü</summary>
@@ -119,7 +138,7 @@
   </div>
 </header>
 
-<main id="inhalt">
+<main id="inhalt" tabindex="-1">
 {% block main %}{% endblock %}
 </main>
 
@@ -135,7 +154,7 @@
       </address>
     </div>
     <div>
-      <h4>Radontherapie</h4>
+      <h2 class="foot-h">Radontherapie</h2>
       <ul>
         <li><a href="{{ root }}radontherapie/index.html">Radon und Radonkur</a></li>
         <li><a href="{{ root }}radontherapie/sicherheit.html">Sicherheit und Strahlung</a></li>
@@ -144,7 +163,7 @@
       </ul>
     </div>
     <div>
-      <h4>Verein</h4>
+      <h2 class="foot-h">Verein</h2>
       <ul>
         <li><a href="{{ root }}verein/index.html">Über uns</a></li>
         <li><a href="{{ root }}verein/tagungen.html">Tagungen</a></li>
@@ -153,11 +172,12 @@
       </ul>
     </div>
     <div>
-      <h4>Service</h4>
+      <h2 class="foot-h">Service</h2>
       <ul>
         <li><a href="{{ root }}kontakt.html">Kontakt</a></li>
         <li><a href="{{ root }}impressum.html">Impressum</a></li>
         <li><a href="{{ root }}datenschutz.html">Datenschutz</a></li>
+        <li><a href="{{ root }}barrierefreiheit.html">Barrierefreiheit</a></li>
       </ul>
     </div>
   </div>

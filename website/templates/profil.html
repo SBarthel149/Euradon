@@ -19,6 +19,7 @@
         <dt>Mitglieder</dt><dd>{{ o.anbieter|length }}</dd>
       </dl>
       {{ m.pending("Eine kurze Beschreibung des Ortes und seiner Anwendungen folgt. Sie wird vom Mitglied geliefert und nach dem Textleitfaden des Vereins geprüft.") }}
+      <h2 class="sr-only">Kontakt</h2>
       {% for a in o.anbieter %}
       <div class="contact-card">
         <h3>{{ a.name }}</h3>
